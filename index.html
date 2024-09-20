@@ -29,7 +29,11 @@
             <li><a href="mailto:jahanmomo11@gmail.com">jahanmomo11@gmail.com</a></li>
             <li><a href="tel:+8801722203464">+8801722203464</a></li>
             <li>
-                <a href="https://linkedin.com/in/m-j-momo" target="_blank" class="linkedin-link">
+                <a href="https://linkedin.com/in/m-j-momo" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="linkedin-link" 
+                   aria-label="Visit Marzia Jahan Momo's LinkedIn Profile">
                     LinkedIn <img src="linkedin.png" alt="LinkedIn">
                 </a>
             </li>
@@ -140,13 +144,16 @@
     </footer>
     
     <script>
-        // Smooth scroll for navigation
-        document.querySelectorAll('nav ul li a').forEach(anchor => {
+        // Smooth scroll for internal navigation links only
+        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
 
                 // Close the mobile menu after clicking
                 const navLinks = document.getElementById('nav-links');
@@ -162,7 +169,8 @@
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling up to document
             const isActive = navLinks.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', isActive);
         });
@@ -173,21 +181,6 @@
                 navLinks.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', false);
             }
-        });
-    </script>
-    
-    <script>
-        // Smooth scroll for internal navigation links only
-        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetElement = document.querySelector(this.getAttribute('href'));
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
     </script>
 </body>

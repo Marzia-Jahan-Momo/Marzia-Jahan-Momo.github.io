@@ -13,19 +13,27 @@
     </header>
 
     <nav>
-        <ul>
+        <!-- Menu Toggle Button for Mobile -->
+        <div class="menu-toggle" id="mobile-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <ul id="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="mailto:jahanmomo11@gmail.com">jahanmomo11@gmail.com</a></li>
-			<li><a href="tel:+8801722203464">+8801722203464</a></li>
+            <li><a href="tel:+8801722203464">+8801722203464</a></li>
             <li><a href="https://linkedin.com/in/m-j-momo" target="_blank" class="linkedin-link">LinkedIn <img src="linkedin.png" alt="LinkedIn"></a></li>
         </ul>
     </nav>
 
     <div class="container">
+        <!-- Your existing sections remain unchanged -->
         <section id="about">
             <h2>About Me</h2>
             <p>I am a DevOps Engineer with over 4 years of hands-on work experience in more than three real estate projects, from design to deployment. My experience in optimizing software development processes and system administration gives me the full potential to understand and implement DevOps culture easily.</p>
@@ -42,19 +50,19 @@
             <p><strong>DevOps Engineer</strong></p>
             <p>Apr 2020 – Present</p>
             <ul>
-		<li>Created infrastructure using terraform, reducing codebase by 40%</li>
-		<li>Implemented Gitlab CI/CD and GitHub Actions, replacing Jenkins, to enhance deployment consistency and security.</li>
-		<li>Managed on-prem environments using vSphere, ensuring robust and secure infrastructure.</li>
-		<li>Transitioned projects from vSphere to AWS cloud, leveraging the scalability and flexibility of AWS services, which resulted in improved efficiency and cost savings.</li>
-		<li>Reduced cost by 7% through optimized S3 endpoint usage within private subnets.</li>
-		<li>Deployed and managed on-prem and cloud Kubernetes clusters.</li>
-		<li>Enhanced database performance by implementing ProxySQL cluster, reducing latency.</li>
-		<li>Migrated over 10 applications to AWS, utilizing Lift and Shift, Replatforming and Refactoring strategies.</li>
-		<li>Containerized workloads, achieving a 20% reduction in cloud infrastructure costs.</li>
-		<li>Identified and decommissioned unused resources, cutting unnecessary costs by 15%.</li>
-		<li>Spearheaded the establishment of CI/CD pipelines, reducing deployment times by 50% and cutting setup time by 25%.</li>
-		<li>Implemented advanced caching and routing policies, significantly improving platform performance and user experience.</li>
-		<li>Automated infrastructure deployments and routine tasks, improving efficiency and reducing manual work.</li>
+                <li>Created infrastructure using terraform, reducing codebase by 40%</li>
+                <li>Implemented Gitlab CI/CD and GitHub Actions, replacing Jenkins, to enhance deployment consistency and security.</li>
+                <li>Managed on-prem environments using vSphere, ensuring robust and secure infrastructure.</li>
+                <li>Transitioned projects from vSphere to AWS cloud, leveraging the scalability and flexibility of AWS services, which resulted in improved efficiency and cost savings.</li>
+                <li>Reduced cost by 7% through optimized S3 endpoint usage within private subnets.</li>
+                <li>Deployed and managed on-prem and cloud Kubernetes clusters.</li>
+                <li>Enhanced database performance by implementing ProxySQL cluster, reducing latency.</li>
+                <li>Migrated over 10 applications to AWS, utilizing Lift and Shift, Replatforming and Refactoring strategies.</li>
+                <li>Containerized workloads, achieving a 20% reduction in cloud infrastructure costs.</li>
+                <li>Identified and decommissioned unused resources, cutting unnecessary costs by 15%.</li>
+                <li>Spearheaded the establishment of CI/CD pipelines, reducing deployment times by 50% and cutting setup time by 25%.</li>
+                <li>Implemented advanced caching and routing policies, significantly improving platform performance and user experience.</li>
+                <li>Automated infrastructure deployments and routine tasks, improving efficiency and reducing manual work.</li>
             </ul>
             <p><strong>Tech stacks:</strong> AWS, AWS EKS, Kubernetes, Docker, RDS, Ansible, Kafka, Airflow, Snowflake, Python, Golang, Django, DynamoDB, Nginx, FastAPI, Terraform</p>
             <p><strong>Industry:</strong> Real Estate Projects, Hospitality Projects, E-commerce</p>
@@ -98,7 +106,28 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Close the mobile menu after clicking
+                const navLinks = document.getElementById('nav-links');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
             });
+        });
+
+        // Toggle mobile menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Optional: Close the menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
